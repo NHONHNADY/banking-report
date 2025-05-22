@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { ChevronsUpDown } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 const links = [
@@ -127,7 +128,7 @@ export default function FooterSection() {
       <div className="mb-8 border-b md:mb-12">
         <div className="mx-auto flex max-w-5xl flex-wrap items-end justify-between gap-6 px-6 pb-6">
           <Link href="/" aria-label="go home" className="block size-fit">
-            <img src="RTR-LOGO-04.png" alt="RTR-LOGO" className="W-10 h-10" />
+            <Image src="RTR-LOGO-04.png" alt="RTR-LOGO" className="W-10 h-10" />
           </Link>
           <div className="flex flex-wrap justify-center gap-6 text-sm">
             <Link

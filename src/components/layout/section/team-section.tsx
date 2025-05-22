@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const members = [
   {
     name: "Méschac Irung",
@@ -35,7 +37,7 @@ export default function TeamSection() {
             {members.map((member, index) => (
               <div key={index}>
                 <div className="bg-background size-20 rounded-full border p-0.5 shadow shadow-zinc-950/5">
-                  <img
+                  <Image
                     className="aspect-square rounded-full object-cover"
                     src={member.avatar}
                     alt={member.name}
@@ -62,7 +64,7 @@ export default function TeamSection() {
             {members.map((member, index) => (
               <div key={index}>
                 <div className="bg-background size-20 rounded-full border p-0.5 shadow shadow-zinc-950/5">
-                  <img
+                  <Image
                     className="aspect-square rounded-full object-cover"
                     src={member.avatar}
                     alt={member.name}
@@ -89,7 +91,7 @@ export default function TeamSection() {
             {members.map((member, index) => (
               <div key={index}>
                 <div className="bg-background size-20 rounded-full border p-0.5 shadow shadow-zinc-950/5">
-                  <img
+                  <Image
                     className="aspect-square rounded-full object-cover"
                     src={member.avatar}
                     alt={member.name}

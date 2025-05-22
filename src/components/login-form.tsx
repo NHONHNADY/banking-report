@@ -1,8 +1,10 @@
+import React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import Image from "next/image";
 // import Link from "next/link";
 
 export function LoginForm({
@@ -91,10 +93,13 @@ export function LoginForm({
             </div>
           </form>
           <div className="bg-muted relative hidden md:block">
-            <img
+            <Image
               src="https://cdn.dribbble.com/userupload/12540828/file/original-4080afcbcf000a4fdbdc3bbc33387e9d.png?resize=1200x900"
               alt="Image"
               className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+              fill={true}
+              sizes="(min-width: 768px) 50vw, 100vw"
+              priority
             />
           </div>
         </CardContent>
