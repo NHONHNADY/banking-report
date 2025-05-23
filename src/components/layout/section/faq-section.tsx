@@ -43,7 +43,7 @@ export default function FAQsection() {
   ];
 
   return (
-    <section className="py-2 md:py-5">
+    <section id="faq" className="py-2 md:py-5">
       <div className="mx-auto max-w-5xl px-4 md:px-6">
         <div className="mx-auto max-w-xl w-full">
           <h2 className="text-balance text-3xl font-bold md:text-4xl lg:text-5xl">

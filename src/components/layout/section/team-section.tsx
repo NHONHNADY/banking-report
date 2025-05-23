@@ -4,28 +4,28 @@ const members = [
   {
     name: "Méschac Irung",
     role: "Creator",
-    avatar: "https://avatars.githubusercontent.com/u/47919550?v=4",
+    avatar: "/https://avatars.githubusercontent.com/u/47919550?v=4",
   },
   {
     name: "Théo Balick",
     role: "Frontend Dev",
-    avatar: "https://avatars.githubusercontent.com/u/68236786?v=4",
+    avatar: "/https://avatars.githubusercontent.com/u/68236786?v=4",
   },
   {
     name: "Glodie Lukose",
     role: "Frontend Dev",
-    avatar: "https://avatars.githubusercontent.com/u/99137927?v=4",
+    avatar: "/https://avatars.githubusercontent.com/u/99137927?v=4",
   },
   {
     name: "Bernard Ngandu",
     role: "Backend Dev",
-    avatar: "https://avatars.githubusercontent.com/u/31113941?v=4",
+    avatar: "/https://avatars.githubusercontent.com/u/31113941?v=4",
   },
 ];
 
-export default function TeamSection() {
+export const Team = () => {
   return (
-    <section className="py-2 md:py-2">
+    <section id="team" className="py-2 md:py-2">
       <div className="mx-auto max-w-3xl px-8 lg:px-0">
         <h3 className="mb-8 text-4xl font-bold md:mb-16 lg:text-2xl">
           ISTAD team
@@ -111,4 +111,4 @@ export default function TeamSection() {
       </div>
     </section>
   );
-}
+};

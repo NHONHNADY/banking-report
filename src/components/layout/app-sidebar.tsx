@@ -155,8 +155,8 @@ export default function AppSidebar() {
                     className="h-8 w-8 rounded-lg"
                     showInfo
                     user={{
-                      imageUrl: "/RTR-LOGO.png",
-                      fullName: "nady",
+                      imageUrl: "/profile.jpg",
+                      fullName: "nhonh nady",
                       emailAddresses: [{ emailAddress: "dii-fong@gmail.com" }],
                     }}
                   />
@@ -176,10 +176,10 @@ export default function AppSidebar() {
                       className="h-8 w-8 rounded-lg"
                       showInfo
                       user={{
-                        imageUrl: "/RTR-LOGO.png",
-                        fullName: "nady",
+                        imageUrl: "/profile.jpg",
+                        fullName: "nhonh nady",
                         emailAddresses: [
-                          { emailAddress: "it.chhaya@gmail.com" },
+                          { emailAddress: "dii-fong@gmail.com" },
                         ],
                       }}
                     />

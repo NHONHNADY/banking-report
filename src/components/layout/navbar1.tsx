@@ -1,3 +1,4 @@
+"use client";
 import { Book, Menu, Sunset, Trees, Zap } from "lucide-react";
 
 import {
@@ -24,6 +25,7 @@ import {
 } from "@/components/ui/sheet";
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 
 interface MenuItem {
   title: string;
@@ -53,15 +55,15 @@ interface Navbar1Props {
   };
 }
 
-const Navbar = ({
+const Navbar1 = ({
   logo = {
     url: "/",
-    src: "RTR-LOGO-04.png",
+    src: "/RTR-LOGO-04.png",
     alt: "app-log",
     title: "ISTAD",
   },
   menu = [
-    { title: "About", url: "/about" },
+    { title: "About", url: "#about" },
     {
       title: "Feature",
       url: "#",
@@ -94,42 +96,16 @@ const Navbar = ({
       ],
     },
     {
-      title: "Contact",
-      url: "/contact",
-      //   items: [
-      //     {
-      //       title: "Help Center",
-      //       description: "Get all the answers you need right here",
-      //       icon: <Zap className="size-5 shrink-0" />,
-      //       url: "#",
-      //     },
-      //     {
-      //       title: "Contact Us",
-      //       description: "We are here to help you with any questions you have",
-      //       icon: <Sunset className="size-5 shrink-0" />,
-      //       url: "#",
-      //     },
-      //     {
-      //       title: "Status",
-      //       description: "Check the current status of our services and APIs",
-      //       icon: <Trees className="size-5 shrink-0" />,
-      //       url: "#",
-      //     },
-      //     {
-      //       title: "Terms of Service",
-      //       description: "Our terms and conditions for using our services",
-      //       icon: <Book className="size-5 shrink-0" />,
-      //       url: "#",
-      //     },
-      //   ],
+      title: "Team",
+      url: "#team",
     },
     {
-      title: "Team",
-      url: "/team",
+      title: "Contact",
+      url: "#contact",
     },
     {
       title: "FAQs",
-      url: "/faq",
+      url: "#faq",
     },
   ],
   auth = {
@@ -137,15 +113,22 @@ const Navbar = ({
     // signup: { title: "Sign up", url: "#" },
   },
 }: Navbar1Props) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
     <section className="py-4">
-      <div className="container m-auto">
+      <div className="sticky border-b-[1px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background">
         {/* Desktop Menu */}
         <nav className="hidden justify-between lg:flex">
           <div className="flex items-center gap-6">
             {/* Logo */}
             <Link href={logo.url} className="flex items-center gap-2">
-              <Image src={logo.src} className="max-h-8" alt={logo.alt} />
+              <Image
+                src={logo.src}
+                className="max-h-8"
+                alt={logo.alt}
+                width={75}
+                height={45}
+              />
               <span className="text-lg font-semibold tracking-tighter">
                 {logo.title}
               </span>
@@ -173,12 +156,18 @@ const Navbar = ({
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link href={logo.url} className="flex items-center gap-2">
-              <Image src={logo.src} className="max-h-8" alt={logo.alt} />
+              <Image
+                src={logo.src}
+                className="max-h-8"
+                alt={logo.alt}
+                width={75}
+                height={45}
+              />
             </Link>
-            <Sheet>
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon">
-                  <Menu className="size-4" />
+                  <Menu className="size-4" onClick={() => setIsOpen(true)} />
                 </Button>
               </SheetTrigger>
               <SheetContent className="overflow-y-auto">
@@ -189,6 +178,8 @@ const Navbar = ({
                         src={logo.src}
                         className="max-h-8"
                         alt={logo.alt}
+                        width={75}
+                        height={45}
                       />
                     </Link>
                   </SheetTitle>
@@ -199,7 +190,7 @@ const Navbar = ({
                     collapsible
                     className="flex w-full flex-col gap-4"
                   >
-                    {menu.map((item) => renderMobileMenuItem(item))}
+                    {menu.map((item) => renderMobileMenuItem(item, setIsOpen))}
                   </Accordion>
 
                   <div className="flex flex-col gap-3">
@@ -240,6 +231,7 @@ const renderMenuItem = (item: MenuItem) => {
     <NavigationMenuItem key={item.title}>
       <NavigationMenuLink
         href={item.url}
+        key={item.title}
         className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-muted hover:text-accent-foreground"
       >
         {item.title}
@@ -248,7 +240,10 @@ const renderMenuItem = (item: MenuItem) => {
   );
 };
 
-const renderMobileMenuItem = (item: MenuItem) => {
+const renderMobileMenuItem = (
+  item: MenuItem,
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+) => {
   if (item.items) {
     return (
       <AccordionItem key={item.title} value={item.title} className="border-b-0">
@@ -265,7 +260,12 @@ const renderMobileMenuItem = (item: MenuItem) => {
   }
 
   return (
-    <a key={item.title} href={item.url} className="text-md font-semibold">
+    <a
+      key={item.title}
+      href={item.url}
+      onClick={() => setIsOpen(false)}
+      className="text-md font-semibold"
+    >
       {item.title}
     </a>
   );
@@ -290,4 +290,4 @@ const SubMenuLink = ({ item }: { item: MenuItem }) => {
   );
 };
 
-export { Navbar };
+export { Navbar1 };

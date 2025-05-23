@@ -1,4 +1,4 @@
-import { Navbar } from "@/components/layout/navbar";
+import { Navbar2 } from "@/components/layout/nvarbar2";
 import FooterSection from "@/components/layout/section/footer-section";
 
 export default function LandingLayout({
@@ -8,7 +8,7 @@ export default function LandingLayout({
 }) {
   return (
     <div>
-      <Navbar></Navbar>
+      <Navbar2 />
       <section>{children}</section>
       <FooterSection />
     </div>

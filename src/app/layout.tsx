@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 // import { Geist, Geist_Mono } from "next/font/google";
+import { fontVariables } from "@/lib/font";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cookies } from "next/headers";
@@ -7,7 +8,6 @@ import "./globals.css";
 import "./theme.css";
 import { ActiveThemeProvider } from "@/components/active-theme";
 import { cn } from "@/lib/utils";
-import { fontVariables } from "@/lib/font";
 
 const META_THEME_COLORS = {
   light: "#ffffff",
@@ -55,7 +55,7 @@ export default async function RootLayout({
       </head>
       <body
         className={cn(
-          "bg-background overflow-hidden overscroll-none font-sans antialiased",
+          "bg-background font-sans antialiased",
           activeThemeValue ? `theme-${activeThemeValue}` : "",
           isScaled ? "theme-scaled" : "",
           fontVariables
@@ -66,6 +66,7 @@ export default async function RootLayout({
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
+          enableColorScheme
         >
           <ActiveThemeProvider initialTheme={activeThemeValue}>
             {children}

@@ -15,8 +15,8 @@ import { useRouter } from "next/navigation";
 export function UserNav() {
   // const { user } = useUser();
   const user = {
-    imageUrl: "/RTR-LOGO.png",
-    fullName: "nady",
+    imageUrl: "/profile.jpg",
+    fullName: "nhonh nady",
     emailAddresses: [{ emailAddress: "dii-fong@gmail.com" }],
   };
 
@@ -55,7 +55,7 @@ export function UserNav() {
             <DropdownMenuItem>New Team</DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
+          <DropdownMenuItem className="text-red-500 focus:text-red-500">
             Sign-out
             {/* <SignOutButton redirectUrl="/auth/sign-in" /> */}
           </DropdownMenuItem>
