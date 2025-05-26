@@ -5,26 +5,61 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+// type LoginRequest = {
+//   username: string;
+//   password: string;
+// };
+
+//create a schema for validation
+const formSchema = z.object({
+  username: z.string().min(2).max(50).email("Invalid email address"),
+  password: z
+    .string()
+    .nonempty("Password is required")
+    .min(6, "Password must be at least 6 characters long"),
+});
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  const router = useRouter();
-  function login() {
-    // Handle login logic here
-    // console.log("Login button clicked");
-    router.push("/dashboard");
+  // const router = useRouter();
+  // const form = useForm<LoginRequest>();
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+  } = form;
+
+  function onSubmit(data: z.infer<typeof formSchema>) {
+    console.log("Form submitted:", data);
   }
+
+  const username = watch("username");
+
+  // function login() {
+  //   // Handle login logic here
+  //   // console.log("Login button clicked");
+  //   router.push("/dashboard");
+  // }
   return (
-    <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <Card className="overflow-hidden">
+    <div className={cn("flex flex-col gap-0", className)} {...props}>
+      <Card className="overflow-hidden p-0">
         <CardContent className="grid p-0 md:grid-cols-2">
-          <form className="p-6 md:p-8">
+          <form className="p-6 md:p-8" onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-6">
               <div className="flex flex-col items-center text-center">
-                <h1 className="text-2xl font-bold">Welcome back</h1>
+                <h1 className="text-2xl font-bold">Welcome to {username}</h1>
                 <p className="text-balance text-muted-foreground">
                   Login to your Acme Inc account
                 </p>
@@ -32,11 +67,17 @@ export function LoginForm({
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
+                  {...register("username")}
                   id="email"
                   type="email"
                   placeholder="m@example.com"
                   required
                 />
+                {errors.username && (
+                  <p className="text-red-500 text-sm">
+                    {errors.username.message}
+                  </p>
+                )}
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center">
@@ -48,9 +89,19 @@ export function LoginForm({
                     Forgot your password?
                   </a>
                 </div>
-                <Input id="password" type="password" required />
+                <Input
+                  {...register("password")}
+                  id="password"
+                  type="password"
+                  required
+                />
+                {errors.password && (
+                  <p className="text-red-500 text-sm">
+                    {errors.password.message}
+                  </p>
+                )}
               </div>
-              <Button onClick={login} type="button" className="w-full">
+              <Button type="submit" className="w-full">
                 Login
               </Button>
               <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
@@ -95,12 +146,13 @@ export function LoginForm({
               </div>
             </div>
           </form>
-          <div className="relative hidden bg-muted md:block">
+          <div className="relative hidden bg-muted md:block ">
             <Image
               src="/digital_loging.avif"
               alt="Image"
-              width={600}
-              height={1000}
+              fill={true}
+              // width={600}
+              // height={1000}
               className="absolute inset-0 h-full w-full object-cover dark:bg-muted-foreground"
             />
           </div>
