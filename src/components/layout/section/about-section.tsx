@@ -4,9 +4,9 @@ import Image from "next/image";
 
 export const About = () => {
   return (
-    <section id="about" className="container py-24 sm:py-32">
-      <div className="bg-muted/50 border rounded-lg py-12">
-        <div className="px-6 flex flex-col-reverse md:flex-row gap-8 md:gap-12">
+    <section id="about" className="container py-6 md:py-24 lg:py-32 px-0">
+      <div className="py-0 px-0">
+        <div className="px-6 flex flex-col-reverse md:flex-row items-center gap-8 md:gap-12">
           <Image
             src={"/RTR-LOGO-04.png"}
             alt=""
@@ -20,7 +20,7 @@ export const About = () => {
                 <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
                   About{" "}
                 </span>
-                Company
+                Us
               </h2>
               <p className="text-xl text-muted-foreground mt-4">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

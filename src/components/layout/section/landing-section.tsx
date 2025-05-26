@@ -6,56 +6,65 @@ import Image from "next/image";
 
 export default function HeroSection() {
   return (
-    <section className="py-16 md:py-32">
-      <div className="relative flex flex-col-reverse">
-        <div className="relative z-10 flex w-full max-w-[400px] flex-col items-center justify-center gap-4 md:w-1/2">
-          <h2 className="relative z-10 max-w-xl text-4xl font-medium lg:text-5xl">
-            Welcom to Our App Your All-in-One Productivity Companion
-          </h2>
-        </div>
-
-        <div>
-          <p className="text-body">
-            This modern mobile application is designed with user-centric
-            functionality and a sleek, intuitive interface..{" "}
-            <span className="text-title font-medium">
-              It supports an entire ecosystem
-            </span>{" "}
-            — from products innovate.
-          </p>
-          <p>
-            It supports an entire ecosystem — from products to the APIs and
-            platforms helping developers and businesses innovate
-          </p>
-          <Button asChild size="lg">
-            <Link href="/dashboard">
-              <span className="btn-label">Go ot Product</span>
-            </Link>
-          </Button>
-        </div>
-        <div>
-          <div className="mt-2 h-fit md:absolute">
-            {/* <div
-              aria-hidden
-              className="bg-linear-to-l z-1 to-background absolute inset-0 hidden from-transparent to-55% md:block"
-            ></div> */}
-            <div className="border-border/50 relative rounded-2xl border border-dotted p-2 pl-10">
-              <Image
-                src="/all-Brandship.png"
-                className="hidden rounded-[12px] dark:block"
-                alt="partnership dark"
-                width={1207}
-                height={929}
-              />
-              <Image
-                src="/all-Brandship.png"
-                className="rounded-[12px] shadow dark:hidden"
-                alt="partnership light"
-                width={1207}
-                height={929}
-              />
+    <section className="py-4 md:py-16 lg:py-24 px-0">
+      <div className="relative flex flex-col items-center justify-center gap-8 px-4 md:flex-row md:px-8 lg:px-16">
+        <div className="relative z-10 flex w-full max-w-[600px] flex-col items-center justify-center gap-4 md:w-1/2">
+          <div className="flex w-full flex-col-reverse">
+            <h4 className="relative z-10 max-w-xl text-4xl font-small lg:text-5xl">
+              Welcom to Our App Your All-in-One Productivity Companion
+            </h4>
+          </div>
+          <div>
+            <p className="text-body">
+              This modern mobile application is designed with user-centric
+              functionality and a sleek, intuitive interface..{" "}
+              <span className="text-title font-medium">
+                It supports an entire ecosystem
+              </span>{" "}
+              — from products innovate.
+            </p>
+            <p>
+              It supports an entire ecosystem — from products to the APIs and
+              platforms helping developers and businesses innovate
+            </p>
+            <div className="mt-4 flex w-full flex-col justify-items-start gap-4 md:flex-row">
+              <Button
+                asChild
+                size="lg"
+                className="relateive mt-4  flex flex-col justify-center-relative"
+              >
+                <Link href="/dashboard">
+                  <span className="btn-label">Go ot Product</span>
+                </Link>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                className="relateive mt-4  flex flex-col justify-center-relative"
+              >
+                <Link href="/dashboard">
+                  <span className="btn-label">Learn mores</span>
+                </Link>
+              </Button>
             </div>
           </div>
+        </div>
+
+        <div className="mt-2 flex flex-row items-center justify-center gap-4 md:mt-0 md:w-1/2">
+          <Image
+            src="/all-Brandship.png"
+            className="rounded-(--radius) z-1 relative hidden border dark:block"
+            alt="partnership dark"
+            width={920}
+            height={720}
+          />
+          <Image
+            src="/all-Brandship.png"
+            className="rounded-(--radius) z-1 relative border dark:hidden"
+            alt="partnership light"
+            width={920}
+            height={720}
+          />
         </div>
       </div>
     </section>
